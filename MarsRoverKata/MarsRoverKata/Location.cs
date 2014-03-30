@@ -41,7 +41,65 @@ namespace MarsRoverKata
             switch (this.CardinalPoint)
             {
                 case MarsRoverKata.CardinalPoint.N:
+                case MarsRoverKata.CardinalPoint.S:
                     Y = Y + 1;
+                    break;
+                case MarsRoverKata.CardinalPoint.E:
+                case MarsRoverKata.CardinalPoint.W:
+                    X = X + 1;
+                    break;
+            }
+        }
+
+        internal void MoveBackward()
+        {
+            switch (this.CardinalPoint)
+            {
+                case MarsRoverKata.CardinalPoint.N:
+                case MarsRoverKata.CardinalPoint.S:
+                    Y = Y - 1;
+                    break;
+                case MarsRoverKata.CardinalPoint.E:
+                case MarsRoverKata.CardinalPoint.W:
+                    X = X - 1;
+                    break;
+            }
+        }
+
+        internal void RotateLeft()
+        {
+            switch (this.CardinalPoint)
+            {
+                case MarsRoverKata.CardinalPoint.N:
+                    this.CardinalPoint = CardinalPoint.W;
+                    break;
+                case MarsRoverKata.CardinalPoint.W:
+                    this.CardinalPoint = CardinalPoint.S;
+                    break;
+                case MarsRoverKata.CardinalPoint.S:
+                    this.CardinalPoint = CardinalPoint.E;
+                    break;
+                case MarsRoverKata.CardinalPoint.E:
+                    this.CardinalPoint = CardinalPoint.N;
+                    break;
+            }
+        }
+
+        internal void RotateRight()
+        {
+            switch (this.CardinalPoint)
+            {
+                case MarsRoverKata.CardinalPoint.N:
+                    this.CardinalPoint = CardinalPoint.E;
+                    break;
+                case MarsRoverKata.CardinalPoint.E:
+                    this.CardinalPoint = CardinalPoint.S;
+                    break;
+                case MarsRoverKata.CardinalPoint.S:
+                    this.CardinalPoint = CardinalPoint.W;
+                    break;
+                case MarsRoverKata.CardinalPoint.W:
+                    this.CardinalPoint = CardinalPoint.N;
                     break;
             }
         }

@@ -18,7 +18,7 @@ namespace MarsRoverKata.UnitTest
         }
 
         [TestMethod]
-        public void MarsRoverKataApiTest_SendRoverCommand()
+        public void MarsRoverKataApiTest_SendRoverCommand_ForwardCommand()
         {
             Location startingLocation = new Location(1, 1, CardinalPoint.N);
             Location expectedLocation = new Location(1, 2, CardinalPoint.N);
@@ -32,13 +32,41 @@ namespace MarsRoverKata.UnitTest
         }
 
         [TestMethod]
-        public void MarsRoverKataApiTest_SendRoverCommand()
+        public void MarsRoverKataApiTest_SendRoverCommand_BackwardCommand()
         {
             Location startingLocation = new Location(1, 1, CardinalPoint.N);
             Location expectedLocation = new Location(1, 0, CardinalPoint.N);
             MarsRoverKataApi roverApi = new MarsRoverKataApi(startingLocation);
 
             roverApi.SendCommand("B");
+
+            Location location = roverApi.GetCurrentLocation();
+
+            Assert.AreEqual(location, expectedLocation);
+        }
+
+        [TestMethod]
+        public void MarsRoverKataApiTest_SendRoverCommand_RotateLeftCommand()
+        {
+            Location startingLocation = new Location(1, 1, CardinalPoint.N);
+            Location expectedLocation = new Location(1, 1, CardinalPoint.W);
+            MarsRoverKataApi roverApi = new MarsRoverKataApi(startingLocation);
+
+            roverApi.SendCommand("L");
+
+            Location location = roverApi.GetCurrentLocation();
+
+            Assert.AreEqual(location, expectedLocation);
+        }
+
+        [TestMethod]
+        public void MarsRoverKataApiTest_SendRoverCommand_RotateRightCommand()
+        {
+            Location startingLocation = new Location(1, 1, CardinalPoint.N);
+            Location expectedLocation = new Location(1, 1, CardinalPoint.E);
+            MarsRoverKataApi roverApi = new MarsRoverKataApi(startingLocation);
+
+            roverApi.SendCommand("R");
 
             Location location = roverApi.GetCurrentLocation();
 

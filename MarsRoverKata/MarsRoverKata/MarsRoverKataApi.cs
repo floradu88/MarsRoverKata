@@ -51,17 +51,17 @@ namespace MarsRoverKata
 
         private void rotateRight()
         {
-            throw new NotImplementedException();
+            this.currentLocation.RotateRight();
         }
 
         private void rotateLeft()
         {
-            throw new NotImplementedException();
+            this.currentLocation.RotateLeft();
         }
 
         private void moveBackward()
         {
-            throw new NotImplementedException();
+            this.currentLocation.MoveBackward();
         }
 
         private void moveForward()
