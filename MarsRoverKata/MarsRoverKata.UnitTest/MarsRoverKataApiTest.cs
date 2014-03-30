@@ -77,7 +77,7 @@ namespace MarsRoverKata.UnitTest
         public void MarsRoverKataApiTest_SendRoverCommand_GoNorthUntilHeCirclesThePlanet_ReturnToStartingPoint()
         {
             Location startingLocation = new Location(1, 1, CardinalPoint.N, 5);
-            Location expectedLocation = new Location(1, 1, CardinalPoint.N);
+            Location expectedLocation = new Location(1, 0, CardinalPoint.N);
             MarsRoverKataApi roverApi = new MarsRoverKataApi(startingLocation);
 
             roverApi.SendCommand("FFFFF");
@@ -91,7 +91,7 @@ namespace MarsRoverKata.UnitTest
         public void MarsRoverKataApiTest_SendRoverCommand_GoEastUntilHeCirclesThePlanet_ReturnToStartingPoint()
         {
             Location startingLocation = new Location(1, 1, CardinalPoint.N, 5);
-            Location expectedLocation = new Location(1, 1, CardinalPoint.E);
+            Location expectedLocation = new Location(0, 1, CardinalPoint.E);
             MarsRoverKataApi roverApi = new MarsRoverKataApi(startingLocation);
 
             roverApi.SendCommand("RFFFFF");
@@ -105,7 +105,7 @@ namespace MarsRoverKata.UnitTest
         public void MarsRoverKataApiTest_SendRoverCommand_GoWestUntilHeCirclesThePlanet_ReturnToStartingPoint()
         {
             Location startingLocation = new Location(1, 1, CardinalPoint.N, 5);
-            Location expectedLocation = new Location(1, 1, CardinalPoint.W);
+            Location expectedLocation = new Location(0, 1, CardinalPoint.W);
             MarsRoverKataApi roverApi = new MarsRoverKataApi(startingLocation);
 
             roverApi.SendCommand("LFFFFF");
@@ -133,7 +133,7 @@ namespace MarsRoverKata.UnitTest
         public void MarsRoverKataApiTest_SendRoverCommand_GoSouthUntilHeCirclesThePlanet_ReturnToStartingPoint()
         {
             Location startingLocation = new Location(1, 1, CardinalPoint.N, 5);
-            Location expectedLocation = new Location(1, 1, CardinalPoint.S);
+            Location expectedLocation = new Location(1, 0, CardinalPoint.S);
             MarsRoverKataApi roverApi = new MarsRoverKataApi(startingLocation);
 
             roverApi.SendCommand("LLFFFFF");

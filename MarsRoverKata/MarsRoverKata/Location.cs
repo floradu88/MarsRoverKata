@@ -18,7 +18,7 @@ namespace MarsRoverKata
             this.Y = y;
             this.CardinalPoint = cardinalPoint;
             this.MarsRange = 100;
-            // my map is a square starting from 1,1 to 100,100
+            // my map is a square starting from 0,0 to 100,100
         }
 
         public Location(int x, int y, MarsRoverKata.CardinalPoint cardinalPoint, int range)
@@ -128,11 +128,11 @@ namespace MarsRoverKata
         {
             if (X > MarsRange)
             {
-                X = X % MarsRange;
+                X = X % MarsRange - 1;
             }
             if (Y > MarsRange)
             {
-                Y = Y % MarsRange;
+                Y = Y % MarsRange - 1;
             }
             if (X < 0)
             {
