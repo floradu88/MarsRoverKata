@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardinalPoint.cs" />
+    <Compile Include="Location.cs" />
     <Compile Include="MarsRoverKataApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
