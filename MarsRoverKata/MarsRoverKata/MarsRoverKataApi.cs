@@ -9,6 +9,7 @@ namespace MarsRoverKata
     public class MarsRoverKataApi
     {
         private Location currentLocation;
+        private int range;
         /// <summary>
         /// Initializes a new instance of the <see cref="MarsRoverKataApi"/> class.
         /// </summary>

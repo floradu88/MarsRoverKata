@@ -11,15 +11,25 @@ namespace MarsRoverKata
     /// </summary>
     public class Location
     {
+
         public Location(int x, int y, MarsRoverKata.CardinalPoint cardinalPoint)
         {
             this.X = x;
             this.Y = y;
             this.CardinalPoint = cardinalPoint;
+            this.MarsRange = 100;
+        }
+
+        public Location(int x, int y, MarsRoverKata.CardinalPoint cardinalPoint, int range)
+            : this(x, y, cardinalPoint)
+        {
+            this.MarsRange = range;
         }
         public int X { get; private set; }
         public int Y { get; private set; }
         public CardinalPoint CardinalPoint { get; private set; }
+
+        public int MarsRange { get; private set; }
 
         /// <summary>
         /// Compares the current object with another object of the same type.
@@ -49,6 +59,7 @@ namespace MarsRoverKata
                     X = X + 1;
                     break;
             }
+            checkBoundaries();
         }
 
         internal void MoveBackward()
@@ -64,6 +75,7 @@ namespace MarsRoverKata
                     X = X - 1;
                     break;
             }
+            checkBoundaries();
         }
 
         internal void RotateLeft()
@@ -83,6 +95,7 @@ namespace MarsRoverKata
                     this.CardinalPoint = CardinalPoint.N;
                     break;
             }
+            checkBoundaries();
         }
 
         internal void RotateRight()
@@ -101,6 +114,27 @@ namespace MarsRoverKata
                 case MarsRoverKata.CardinalPoint.W:
                     this.CardinalPoint = CardinalPoint.N;
                     break;
+            }
+            checkBoundaries();
+        }
+
+        private void checkBoundaries()
+        {
+            if (X > MarsRange)
+            {
+                X = X % MarsRange;
+            }
+            if (Y > MarsRange)
+            {
+                Y = Y % MarsRange;
+            }
+            if (X < 0)
+            {
+                X = MarsRange + X;
+            }
+            if (Y < 0)
+            {
+                Y = MarsRange + Y;
             }
         }
     }
