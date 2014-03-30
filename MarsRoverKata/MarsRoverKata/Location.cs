@@ -9,7 +9,7 @@ namespace MarsRoverKata
     /// <summary>
     /// 
     /// </summary>
-    public class Location : IComparable<Location>
+    public class Location
     {
         public Location(int x, int y, MarsRoverKata.CardinalPoint cardinalPoint)
         {
@@ -28,11 +28,22 @@ namespace MarsRoverKata
         /// <returns>
         /// A value that indicates the relative order of the objects being compared. The return value has the following meanings: Value Meaning Less than zero This object is less than the <paramref name="other" /> parameter.Zero This object is equal to <paramref name="other" />. Greater than zero This object is greater than <paramref name="other" />.
         /// </returns>
-        public int CompareTo(Location other)
+        public override bool Equals(System.Object obj)
         {
-            if (other == null)
-                return -1;
-            return (X == other.X && Y == other.Y && CardinalPoint == other.CardinalPoint) ? 0 : 1;
+            if (!(obj is Location))
+                return false;
+            Location other = obj as Location;
+            return (X == other.X && Y == other.Y && CardinalPoint == other.CardinalPoint);
+        }
+
+        internal void MoveForward()
+        {
+            switch (this.CardinalPoint)
+            {
+                case MarsRoverKata.CardinalPoint.N:
+                    Y = Y + 1;
+                    break;
+            }
         }
     }
 }

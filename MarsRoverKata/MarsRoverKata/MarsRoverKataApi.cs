@@ -8,21 +8,20 @@ namespace MarsRoverKata
 {
     public class MarsRoverKataApi
     {
-        private Location startingLocation;
-
+        private Location currentLocation;
         /// <summary>
         /// Initializes a new instance of the <see cref="MarsRoverKataApi"/> class.
         /// </summary>
         /// <param name="location">The starting location of the rover on Mars surface</param>
         public MarsRoverKataApi(Location location)
         {
-            this.startingLocation = location;
+            this.currentLocation = location;
         }
 
 
         public Location GetCurrentLocation()
         {
-            return this.startingLocation;
+            return this.currentLocation;
         }
 
         public void SendCommand(string commandLine)
@@ -67,7 +66,7 @@ namespace MarsRoverKata
 
         private void moveForward()
         {
-            throw new NotImplementedException();
+            this.currentLocation.MoveForward();
         }
     }
 }

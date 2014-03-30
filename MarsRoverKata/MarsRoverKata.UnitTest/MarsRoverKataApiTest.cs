@@ -30,5 +30,19 @@ namespace MarsRoverKata.UnitTest
 
             Assert.AreEqual(location, expectedLocation);
         }
+
+        [TestMethod]
+        public void MarsRoverKataApiTest_SendRoverCommand()
+        {
+            Location startingLocation = new Location(1, 1, CardinalPoint.N);
+            Location expectedLocation = new Location(1, 0, CardinalPoint.N);
+            MarsRoverKataApi roverApi = new MarsRoverKataApi(startingLocation);
+
+            roverApi.SendCommand("B");
+
+            Location location = roverApi.GetCurrentLocation();
+
+            Assert.AreEqual(location, expectedLocation);
+        }
     }
 }
