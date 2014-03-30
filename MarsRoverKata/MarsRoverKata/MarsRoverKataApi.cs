@@ -8,15 +8,21 @@ namespace MarsRoverKata
 {
     public class MarsRoverKataApi
     {
+        //simulate obstacle found by using random
+        // we don't really now what can we expect to find on mars
+        private Random randomNumberGenerator = new Random();
+
         private Location currentLocation;
         private int range;
+        private bool simulateObstacles;
         /// <summary>
         /// Initializes a new instance of the <see cref="MarsRoverKataApi"/> class.
         /// </summary>
         /// <param name="location">The starting location of the rover on Mars surface</param>
-        public MarsRoverKataApi(Location location)
+        public MarsRoverKataApi(Location location, bool simulateObstacles = false)
         {
             this.currentLocation = location;
+            this.simulateObstacles = simulateObstacles;
         }
 
 
@@ -29,8 +35,9 @@ namespace MarsRoverKata
         {
             if (!string.IsNullOrEmpty(commandLine))
             {
-                foreach (char c in commandLine)
+                for (int i = 0; i < commandLine.Length; i++)
                 {
+                    char c = commandLine[i];
                     switch (c)
                     {
                         case 'F':
@@ -67,7 +74,21 @@ namespace MarsRoverKata
 
         private void moveForward()
         {
+            checkForObstacle('F');
             this.currentLocation.MoveForward();
+        }
+
+        private void checkForObstacle(char command)
+        {
+            if (simulateObstacles)
+            {
+                int randomNumber = randomNumberGenerator.Next(10);
+                //will presume that if the number is above 8 this is most likely an obstacle 
+                if (randomNumber >= 8)
+                {
+                    throw new ObstacleFound("Obstacle Found near location {0}, cannot move {1}", currentLocation, command);
+                }
+            }
         }
     }
 }

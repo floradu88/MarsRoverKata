@@ -18,6 +18,7 @@ namespace MarsRoverKata
             this.Y = y;
             this.CardinalPoint = cardinalPoint;
             this.MarsRange = 100;
+            // my map is a square starting from 1,1 to 100,100
         }
 
         public Location(int x, int y, MarsRoverKata.CardinalPoint cardinalPoint, int range)
@@ -44,6 +45,11 @@ namespace MarsRoverKata
                 return false;
             Location other = obj as Location;
             return (X == other.X && Y == other.Y && CardinalPoint == other.CardinalPoint);
+        }
+
+        public override string ToString()
+        {
+            return string.Format("(X:{0}, Y:{1}, CardinalPoint:{2})", X, Y, CardinalPoint);
         }
 
         internal void MoveForward()
